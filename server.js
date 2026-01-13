@@ -34,9 +34,24 @@ app.post("/add-donor",(req,res)=>{
     }
      res.json({ success : true , message : "Donor added successfully"}); 
  });
-
-
   });
+  app.get("/search-donor",(req,res)=>{
+    const {blood_group,city} = req.query;
+
+    const sql = `SELECT * FROM donors
+WHERE blood_group = ?
+AND LOWER(city) = LOWER(?)
+`;
+
+    db.query(sql,[blood_group,city] ,(err,result) =>{
+        if(err){
+            console.log(err);
+            res.json( {success : false ,message:"Search Failed"} );
+            return;
+        }
+        res.json({ success : true , donors : result});
+    })
+  })
 app.listen(5000 , () => {
     console.log("Server is Running");
 })
