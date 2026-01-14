@@ -70,7 +70,6 @@
             email,
             blood_group,
         };
-        console.log("Fetch call ho raha hai...");
         fetch("http://localhost:5000/add-donor" , {
             method : "POST",
             headers : {

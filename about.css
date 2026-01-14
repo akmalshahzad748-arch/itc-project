@@ -15,7 +15,6 @@ body {
 .navbar ul {
     list-style: none;
     display: flex;
-    margin: 0;
 }
 
 .navbar ul li {
